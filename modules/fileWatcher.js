@@ -10,7 +10,10 @@ const startFileWatcher = (folderToWatch, notifyClients) => {
             const isDotFile = /(^|[\/\\])\../.test(path.basename(watchPath));
             const relative = path.relative(folderToWatch, watchPath);
             const isInsideDownload = relative && !relative.startsWith('..') && relative.split(path.sep)[0] === 'download';
-            return isDotFile || isInsideDownload;
+            const isVariablesJson =
+                relative === 'variables.json' ||
+                relative === path.join('project', 'variables.json');
+            return isDotFile || isInsideDownload || isVariablesJson;
         },
         persistent: true,
         ignoreInitial: true, // Setze ignoreInitial auf true, um das Logging beim Start zu verhindern

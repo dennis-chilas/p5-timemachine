@@ -1,11 +1,17 @@
 const chokidar = require('chokidar');
+const path = require('path');
 const WebSocket = require('ws');
 
 let wss = null;
 
 const startFileWatcher = (folderToWatch, notifyClients) => {
     const watcher = chokidar.watch(folderToWatch, {
-        ignored: /(^|[\/\\])\../,
+        ignored: (watchPath) => {
+            const isDotFile = /(^|[\/\\])\../.test(path.basename(watchPath));
+            const relative = path.relative(folderToWatch, watchPath);
+            const isInsideDownload = relative && !relative.startsWith('..') && relative.split(path.sep)[0] === 'download';
+            return isDotFile || isInsideDownload;
+        },
         persistent: true,
         ignoreInitial: true, // Setze ignoreInitial auf true, um das Logging beim Start zu verhindern
         followSymlinks: true,

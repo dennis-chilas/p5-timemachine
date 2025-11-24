@@ -1,4 +1,4 @@
-# P5.js Dev Kit
+# P5 Timemachine
 
 This is an environment to develop p5.js projects. The main feature is to handle screenshots from a p5.js script. Therefore it's heavily inspired by [canvas-sketch](https://github.com/mattdesl/canvas-sketch) from [Matt DesLauriers](https://github.com/mattdesl), the screenshots are located in the project folder, where they are tracked by git and named after their git commit hash. The server has a visual tool built in to listing all commits and display the according screenshots in a discrete webview. In the boilerplate p5.js project is the functionality of hash seeds and a gui library ([dat.gui](https://github.com/dataarts/dat.gui)) integrated. The hash seeds are also saved in the git commit and in the screenshot filename. 
 

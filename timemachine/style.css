@@ -252,7 +252,7 @@ body.view-slider .preview-slider {
     flex-direction: row;
     align-items: center;
     gap: 0px;
-    background-color: var(--control-bg);
+    background-color: var(--bg-color);
     padding: 14px 20px;
     border-radius: 999px;
     z-index: 10;
@@ -260,12 +260,13 @@ body.view-slider .preview-slider {
     pointer-events: none;
     transition: opacity 0.3s ease, background-color 0.3s ease;
     box-shadow: 0 4px 12px var(--shadow);
+    height: 26px;
 }
 .grid-size-control:hover {
     transform: scale(1.1) translateX(-16px);
 
 
-    background-color: var(--control-bg-hover);
+    /* background-color: var(--control-bg); */
     transition: background-color 0.8s cubic-bezier(0.22, 1, 0.36, 1);
 }
 .grid-size-control:hover #gridSizeSlider {
@@ -359,7 +360,7 @@ body.view-grid .grid-size-control {
 
 .view-toggle {
     display: inline-flex;
-    background-color: var(--control-bg);
+    background-color: var(--bg-color);
     border-radius: 999px;
     padding: 4px;
     gap: 4px;
@@ -381,7 +382,7 @@ body.view-grid .grid-size-control {
     border: none;
     background: transparent;
     color: var(--text-secondary);
-    padding: 11px 18px;
+    padding: 8px 12px;
     border-radius: 999px;
     font-size: 14px;
     cursor: pointer;
@@ -391,49 +392,50 @@ ease;
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 26px;
 }
 .view-toggle-btn img {
-    height: 16px;
+    height: 8px;
     transition: transform 0.3s ease;
 }
 .view-toggle-btn:hover {
     transform: scale(1.1);
     transition: transform 0.3s ease;
-    background-color: var(--control-bg-hover);
+    background-color: var(--control-bg);
     color: var(--text-color);
 }
 .view-toggle-btn.active {
-    background-color: var(--bg-color);
+    background-color: var(--active-bg);
     color: var(--text-color);
-    background-color: #e1e1e1;
     color: #6e6e6e;
 }
 .view-toggle-btn.active:hover {
     transform: scale(1.1);
     transition: transform 0.3s ease;
-    background-color: var(--control-bg-hover);
+    background-color: var(--active-bg);
+    /* border: 1px solid #6F6F6F; */
     color: var(--text-color);
 }
 .theme-toggle {
  position: relative;
-    width: 48px;
-    height: 48px;
+    width: 26px;
+    height: 26px;
     border-radius: 50%;
     border: none;
-    background-color: var(--control-bg);
+    background-color: var(--bg-color);
     color: var(--text-color);
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 34px;
+    font-size: 14px;
     z-index: 10;
     transition: background-color 0.3s ease, transform 0.2s ease;
     box-shadow: 0 4px 12px var(--shadow);
 }
 
 .theme-toggle:hover {
-    background-color: var(--control-bg-hover);
+    background-color: var(--control-bg);
     transform: scale(1.1);
 }
 
@@ -520,12 +522,14 @@ width: 320px;
     position: fixed;
     top: 24px;
     right: 24px;
-    width: 48px;
-    height: 48px;
+    width: 26px;
+    height: 26px;
     border-radius: 50%;
     border: none;
-    background-color: var(--control-bg);
-    color: var(--text-color);
+    /* background-color: var(--control-bg);
+    color: var(--text-color); */
+   background-color: var(--bg-color);
+   color: var(--text-color);
     cursor: pointer;
     z-index: 11;
     box-shadow: 0 4px 12px var(--shadow);
@@ -534,14 +538,24 @@ width: 320px;
     justify-content: center;
     align-items: center;
     text-decoration: none;
+    padding: 2px 0 0px 2px;
 }
 
 .back-button:hover {
-    background-color: var(--control-bg-hover);
+    background-color: var(--control-bg);
     transform: scale(1.1);
 }
-.back-icon {
-    font-size: 32px;
+/* .back-icon {
+    font-size: 20px;
     color: var(--text-color);
     transition: transform 0.3s ease;
+} */
+
+.back-icon svg {
+    stroke: var(--text-color);
+    transition: fill 0.3s ease;
+}
+#back-icon-path {
+    fill: var(--text-color);
+    transition: stroke 0.3s ease;
 }

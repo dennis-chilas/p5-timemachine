@@ -14,12 +14,17 @@
 <body class="view-grid">
     <a href="/">
     <button class="back-button" id="project" aria-label="Back to project">
-        <span class="back-icon">×</span>
+        <!-- <span class="back-icon"> -->
+            <svg width="12" height="12" viewBox="0 0 6 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path id="back-icon-path" d="M4.80682 5.45455L0 0.647727L0.647727 0L5.45455 4.80682L4.80682 5.45455ZM0.647727 5.45455L0 4.80682L4.80682 0L5.45455 0.647727L0.647727 5.45455Z" fill="black" style="fill-opacity:1;"/>
+            </svg>
+            <!-- <img src="icon-x.svg" width="12" height="12" alt="Back to project" srcset=""> -->
+            <!-- </span> -->
     </button>
     </a>
     <div class="navigation flex">
         <div class="grid-size-control">
-            <label for="gridSizeSlider">Image Width</label>
+            <label for="gridSizeSlider">Grid</label>
             <input type="range" id="gridSizeSlider" min="10" max="800" value="500" step="1">
         </div>
         <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">

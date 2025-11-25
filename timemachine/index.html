@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Commits</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body class="view-grid">
+    <div class="navigation flex">
+        <div class="grid-size-control">
+            <label for="gridSizeSlider">Image Width</label>
+            <input type="range" id="gridSizeSlider" min="10" max="800" value="500" step="1">
+        </div>
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+            <span class="theme-icon">●</span>
+        </button>
+    </div>
+    <div class="view-toggle" role="group" aria-label="Ansicht wählen">
+        <button class="view-toggle-btn active" data-view="slider"><img src="icon-slider.svg" alt="" srcset=""></button>
+        <button class="view-toggle-btn" data-view="grid"><img src="icon-grid.svg" alt="" srcset=""></button>
+    </div>
+        
+
+    <div class="layout">
+        
+       
+        <main>
+            <input type="text" id="searchInput" placeholder="Search for git hash, time ...">
+            <ul id="commits"></ul>
+        </main>
+        <div class="preview-grid" id="gridPreview">
+            <div class="grid-scroll">
+                <div class="grid" id="grid"></div>
+            </div>
+            
+        </div>
+        <div class="preview-slider" id="sliderPreview">
+            <div class="slider-container">
+                <div class="slider" id="slider"></div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>

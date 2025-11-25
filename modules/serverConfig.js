@@ -100,9 +100,9 @@ const setupServer = async () => {
         }
     });
 
-    app.use('/history', express.static(path.resolve(__dirname, '..', 'history')));
-    app.get('/history', (req, res) => {
-        res.sendFile(path.resolve(__dirname, '..', 'history/index.html'));
+    app.use('/timemachine', express.static(path.resolve(__dirname, '..', 'timemachine')));
+    app.get('/timemachine', (req, res) => {
+        res.sendFile(path.resolve(__dirname, '..', 'timemachine/index.html'));
     });
 
     const getTimestamp = () => {

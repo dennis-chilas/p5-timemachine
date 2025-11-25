@@ -41,6 +41,6 @@ Project is hosted on http://localhost:3007
 WebSocket server is running on ws://localhost:8000
 ```
 
-The visual view is under the project url /history... in my case http://localhost:3007/history
+The visual view is under the project url /timemachine... in my case http://localhost:3007/timemachine
 
 [![example](https://upload.dennis-chilas.de/p5devkit-2.jpg)](https://upload.dennis-chilas.de/p5devkit.mp4)

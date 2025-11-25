@@ -347,6 +347,10 @@ async function fetchCommits() {
 
         commit.image = "/project/download/"+tmp_time + "_" + commit.hash + "_" +tmp_hash+"_s.webp";
         const gridImg = document.createElement('img');
+        // Falls der Bildname "null" enthält, bitte Bildnamen auf noimage.jpg setzen
+        if (commit.image.includes("null")) {
+            commit.image = "/timemachine/noimage.jpg";
+        }
         gridImg.src = commit.image;
         gridImg.classList.add('grid-img');
         gridImg.dataset.index = i;

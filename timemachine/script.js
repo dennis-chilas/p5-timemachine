@@ -3,7 +3,7 @@ let slides;
     let gridImages;
     let gridContent;
     let activeIndex = 0;
-    let currentView = 'slider';
+    let currentView = localStorage.getItem('tmViewMode') || 'slider';
     let commitCollapseTimer;
     const COMMIT_COLLAPSE_DELAY = 5000;
 
@@ -605,6 +605,7 @@ function setView(mode) {
         return;
     }
     currentView = mode;
+    localStorage.setItem('tmViewMode', mode);
     document.body.classList.remove('view-grid', 'view-slider');
     document.body.classList.add(`view-${mode}`);
     document.querySelectorAll('.view-toggle-btn').forEach(button => {

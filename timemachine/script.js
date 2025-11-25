@@ -18,31 +18,31 @@ function smoothScroll(element, target, duration) {
         return Promise.resolve();
     }
 
-    var start_time = Date.now();
-    var end_time = start_time + duration;
+    let start_time = Date.now();
+    let end_time = start_time + duration;
 
-    var start_top = element.scrollTop;
-    var distance = target - start_top;
+    let start_top = element.scrollTop;
+    let distance = target - start_top;
 
-    var smooth_step = function (start, end, point) {
+    let smooth_step = function (start, end, point) {
         if (point <= start) { return 0; }
         if (point >= end) { return 1; }
-        var x = (point - start) / (end - start);
+        let x = (point - start) / (end - start);
         return x * x * (3 - 2 * x);
     }
 
     return new Promise(function (resolve, reject) {
-        var previous_top = element.scrollTop;
+        let previous_top = element.scrollTop;
 
-        var scroll_frame = function () {
+        let scroll_frame = function () {
             if (element.scrollTop != previous_top) {
                 resolve();
                 return;
             }
 
-            var now = Date.now();
-            var point = smooth_step(start_time, end_time, now);
-            var frameTop = Math.round(start_top + (distance * point));
+            let now = Date.now();
+            let point = smooth_step(start_time, end_time, now);
+            let frameTop = Math.round(start_top + (distance * point));
             element.scrollTop = frameTop;
 
             if (now >= end_time) {
@@ -75,10 +75,10 @@ function scrollItemIntoView(container, item) {
 }
 
 function filterList() {
-    var input = document.getElementById('searchInput');
-    var filter = input.value.toLowerCase();
-    var list = document.getElementById("commits");
-    var listItems = list.getElementsByTagName('li');
+    let input = document.getElementById('searchInput');
+    let filter = input.value.toLowerCase();
+    let list = document.getElementById("commits");
+    let listItems = list.getElementsByTagName('li');
     
     Array.from(listItems).forEach(function(item) {
         if (item.textContent.toLowerCase().indexOf(filter) > -1) {
@@ -127,8 +127,8 @@ function reformatTimestamp(timestamp) {
 function loaded(){
     img_preview = document.querySelector('#preview');
     console.log(img_preview)
-    var list = document.getElementById("commits");
-    var listItems = Array.from(list.querySelectorAll("li"));
+    let list = document.getElementById("commits");
+    let listItems = Array.from(list.querySelectorAll("li"));
     let currentItem = 0;
     listItems[currentItem].classList.add("active");
     // Scroll active item into view on initial load
@@ -172,11 +172,11 @@ function loaded(){
         if (event.keyCode === 40) { // down arrow key
             event.preventDefault();
             // Find next visible item
-            var nextIndex = currentItem + 1;
+            let nextIndex = currentItem + 1;
             while (nextIndex < listItems.length && listItems[nextIndex].style.display === 'none') {
                 nextIndex++;
             }
-            var nextItem = listItems[nextIndex];
+            let nextItem = listItems[nextIndex];
             if (nextItem && nextItem.style.display !== 'none') {
                 listItems[currentItem].classList.remove("active");
                 nextItem.classList.add("active");
@@ -192,11 +192,11 @@ function loaded(){
         } else if (event.keyCode === 38) { // up arrow key
             event.preventDefault();
             // Find previous visible item
-            var prevIndex = currentItem - 1;
+            let prevIndex = currentItem - 1;
             while (prevIndex >= 0 && listItems[prevIndex].style.display === 'none') {
                 prevIndex--;
             }
-            var prevItem = listItems[prevIndex];
+            let prevItem = listItems[prevIndex];
             if (prevItem && prevItem.style.display !== 'none') {
                 listItems[currentItem].classList.remove("active");
                 prevItem.classList.add("active");

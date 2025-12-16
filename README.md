@@ -4,7 +4,7 @@ This is an environment to develop p5.js projects. The main feature is to handle 
 
 I use this starter kit for teaching classes, therefore the code organisation is just basic, hopefully understandable for beginners.
 
-## Disclaimer
+## ⚠️ Disclaimer
 This project is a beta version and is primarily intended for educational and student use.
 It is provided as is, without any warranties or guarantees of any kind.
 

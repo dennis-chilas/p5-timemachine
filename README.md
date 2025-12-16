@@ -49,4 +49,6 @@ WebSocket server is running on ws://localhost:8000
 
 The visual view is under the project url /timemachine... in my case http://localhost:3007/timemachine
 
+👉 If you cannot check out an older version, make sure to save the current state first.
+
 [![example](https://upload.dennis-chilas.de/p5devkit-2.jpg)](https://upload.dennis-chilas.de/p5devkit.mp4)

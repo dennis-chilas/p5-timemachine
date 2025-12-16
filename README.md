@@ -4,6 +4,12 @@ This is an environment to develop p5.js projects. The main feature is to handle 
 
 I use this starter kit for teaching classes, therefore the code organisation is just basic, hopefully understandable for beginners.
 
+## Disclaimer
+This project is a beta version and is primarily intended for educational and student use.
+It is provided as is, without any warranties or guarantees of any kind.
+
+The authors take no responsibility for data loss, corrupted files, or other issues that may arise from using this software.
+Please make sure to backup your work regularly and use this tool at your own risk.
 
 ## requirements
 node.js needs to be installed. e.g. for MacOS, install [homebrew](https://www.homebrew.sh) then

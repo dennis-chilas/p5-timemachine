@@ -44,6 +44,27 @@ const setupServer = async () => {
 
     const git = getGitInstance();
 
+    const getCommitImageMap = async () => {
+        const files = await fs.readdir(downloadFolder);
+        const imageMap = new Map();
+
+        for (const file of files) {
+            if (!file.endsWith('_s.webp')) {
+                continue;
+            }
+
+            const match = file.match(/^\d{6}-\d{6}_([a-f0-9]{40})_(0x[a-fA-F0-9]{64})_s\.webp$/);
+            if (!match) {
+                continue;
+            }
+
+            const commitHash = match[1];
+            imageMap.set(commitHash, `/project/download/${file}`);
+        }
+
+        return imageMap;
+    };
+
 
     app.post('/save-canvas', async (req, res) => {
         try {
@@ -82,7 +103,12 @@ const setupServer = async () => {
     app.get('/commits', async (req, res) => {
         try {
             const log = await git.log(['--reflog']);
-            res.json(log.all);
+            const imageMap = await getCommitImageMap();
+            const commits = log.all.map((commit) => ({
+                ...commit,
+                image: imageMap.get(commit.hash) || '/timemachine/noimage.jpg'
+            }));
+            res.json(commits);
         } catch (err) {
             console.error('Error fetching commits:', err);
             res.status(500).json({ success: false, message: 'Error fetching commits' });

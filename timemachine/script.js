@@ -89,39 +89,14 @@ function filterList() {
     });
 }
 
-function reformatTimestamp(timestamp) {
-    // Eingabedatum und -zeit mit Zeitzone
-    let date = new Date(timestamp);
-  
-    // Einzelne Komponenten des Datums und der Zeit extrahieren
-    let year = date.getFullYear().toString().slice(2); // Nur die letzten beiden Ziffern des Jahres
-    let month = String(date.getMonth() + 1).padStart(2, '0'); // Monate sind 0-indiziert
-    let day = String(date.getDate()).padStart(2, '0');
-    let hours = String(date.getHours()).padStart(2, '0');
-    let minutes = String(date.getMinutes()).padStart(2, '0');
-    let seconds = String(date.getSeconds()).padStart(2, '0');
-  
-    // Zusammenführen der Komponenten im gewünschten Format
-    let formattedTimestamp = `${year}${month}${day}-${hours}${minutes}${seconds}`;
-  
-    return formattedTimestamp;
-  }
-
-  function extractHash(inputString) {
-    // Muster für den Hash finden
-    let hashPattern = /hash:\s(0x[a-fA-F0-9]{64})/;
-    
-    // Den Hash aus dem String extrahieren
-    let match = inputString.match(hashPattern);
-    
-    // Überprüfen, ob ein Hash gefunden wurde und zurückgeben
-    if (match) {
-      return match[1];
-    } else {
-      return null; // Falls kein Hash gefunden wurde
-    }
-  }
-
+function attachImageFallback(img) {
+    img.addEventListener('error', () => {
+        if (!img.dataset.fallbackApplied) {
+            img.dataset.fallbackApplied = 'true';
+            img.src = '/timemachine/noimage.jpg';
+        }
+    });
+}
 
 
 function loaded(){
@@ -341,24 +316,18 @@ async function fetchCommits() {
     gridElement.innerHTML = '';
     sliderElement.innerHTML = '';
     commits.forEach((commit,i) => {
-        const tmp_time = reformatTimestamp(commit.date);
-        const tmp_hash = extractHash(commit.message);
-
-
-        commit.image = "/project/download/"+tmp_time + "_" + commit.hash + "_" +tmp_hash+"_s.webp";
+        commit.image = commit.image || "/timemachine/noimage.jpg";
         const gridImg = document.createElement('img');
-        // Falls der Bildname "null" enthält, bitte Bildnamen auf noimage.jpg setzen
-        if (commit.image.includes("null")) {
-            commit.image = "/timemachine/noimage.jpg";
-        }
         gridImg.src = commit.image;
         gridImg.classList.add('grid-img');
         gridImg.dataset.index = i;
+        attachImageFallback(gridImg);
 
         const sliderImg = document.createElement('img');
         sliderImg.src = commit.image;
         sliderImg.classList.add('slide');
         sliderImg.dataset.index = i;
+        attachImageFallback(sliderImg);
         
 
 
@@ -633,4 +602,3 @@ function setView(mode) {
     }
     resetCommitListCollapseState();
 }
-

@@ -51,4 +51,4 @@ The visual view is under the project url /timemachine... in my case http://local
 
 👉 If you cannot check out an older version, make sure to save the current state first.
 
-[![example](https://upload.dennis-chilas.de/p5devkit-2.jpg)](https://upload.dennis-chilas.de/p5devkit.mp4)
+[![example](https://p5tm.net/img/screen_1.jpg)](https://p5tm.net/p5tm.mp4)
